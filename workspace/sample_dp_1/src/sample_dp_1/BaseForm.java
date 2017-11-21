@@ -24,8 +24,9 @@ import sample_dp_1.Db.Db;
 import sample_dp_1.Enums.GenderType;
 import sample_dp_1.Enums.UserMessage;
 import sample_dp_1.Helpers.GeneralHelpers;
+import sample_dp_1.Interfaces.IForm;
 
-public class BaseForm extends JFrame {
+public class BaseForm extends JFrame implements IForm {
 	private static final long serialVersionUID = 1L;
 
 	// Gerekli Componentlerimizin oluþturdugu nesneler
@@ -56,7 +57,7 @@ public class BaseForm extends JFrame {
 				}
 				try {
 					cinsiyet = gh.degerAta(cinsiyet);
-					if (db.isExist(jad.getText().trim(), jsoyad.getText().trim(),cinsiyet)) {
+					if (db.isExistUser(jad.getText().trim(), jsoyad.getText().trim(),cinsiyet)) {
 						JOptionPane.showMessageDialog(jframe, UserMessage.UserExist);
 						return;
 					}
@@ -93,6 +94,7 @@ public class BaseForm extends JFrame {
 
 	}
 
+	@Override
 	// Form olusturmak icin kullanilan metot
 	public void formOlustur() {
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -119,6 +121,7 @@ public class BaseForm extends JFrame {
 		jframe.setVisible(true);
 	}
 
+	@Override
 	// Son islem metodumuz
 	public void sonIslem() throws Exception {
 		this.formOlustur();

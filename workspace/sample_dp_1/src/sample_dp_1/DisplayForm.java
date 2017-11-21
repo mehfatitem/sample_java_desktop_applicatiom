@@ -29,9 +29,10 @@ import sample_dp_1.Db.Db;
 import sample_dp_1.Enums.GenderType;
 import sample_dp_1.Enums.UserMessage;
 import sample_dp_1.Helpers.GeneralHelpers;
+import sample_dp_1.Interfaces.IForm;
 
 
-public class DisplayForm extends JFrame {
+public class DisplayForm extends JFrame implements IForm {
 	// Gerekli Componentlerimizin oluþturdugu nesneler
 	private static final long serialVersionUID = 1L;
 	private JFrame jframe = new JFrame();
@@ -151,7 +152,7 @@ public class DisplayForm extends JFrame {
 				}
 				try {
 					cinsiyet = gh.degerAta(cinsiyet);
-					if (db.isExist(jad.getText().trim(), jsoyad.getText().trim() , cinsiyet)) {
+					if (db.isExistUser(jad.getText().trim(), jsoyad.getText().trim() , cinsiyet)) {
 						JOptionPane.showMessageDialog(jframe, UserMessage.UserExist);
 						return;
 					}
@@ -204,6 +205,7 @@ public class DisplayForm extends JFrame {
 		});
 	}
 
+	@Override
 	// Formumuzu burada tasarliyoruz.
 	public void formOlustur() {
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -242,6 +244,7 @@ public class DisplayForm extends JFrame {
 		jframe.setVisible(true);
 	}
 
+	@Override
 	// Ekstra metot yazmak istersek , onuda en son olarak bu metodun icinde
 	// cagiriyoruz. En son bu metoduda kurucu metot icinde cagariyoruz
 	public void sonIslem() throws Exception {

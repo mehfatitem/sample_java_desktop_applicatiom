@@ -18,8 +18,9 @@ import javax.swing.JTextField;
 import javax.swing.table.TableColumn;
 
 import sample_dp_1.Enums.GenderType;
+import sample_dp_1.Interfaces.IGeneralHelpers;
 
-public class GeneralHelpers {
+public class GeneralHelpers extends StringHelpers  implements IGeneralHelpers{
 	// Gelen cinsiyet parametresini tinyint olarak kaydetmek için bu metodu
 	// kullandik.
 
@@ -27,6 +28,7 @@ public class GeneralHelpers {
 
 	private static String header[] = { "Kullancý ID", "Ad", "Soyad", "Cinsiyet" };
 
+	@Override
 	public String degerAta(String metin) {
 		if (metin.equals(GenderType.MALE.toString())) {
 			metin = GenderType.MALEId.toString();
@@ -38,6 +40,7 @@ public class GeneralHelpers {
 		return metin;
 	}
 
+	@Override
 	public JTable getTableWithSetArea(JTable table, String[] value) {
 
 		int row = table.getRowCount();
@@ -64,6 +67,7 @@ public class GeneralHelpers {
 		return table;
 	}
 
+	@Override
 	public int getSelectedIndexTable(JTable table, String[] value) {
 		try {
 			if (table.getValueAt(table.getSelectedRow(), 3).toString().equals(value[1]))
@@ -76,6 +80,7 @@ public class GeneralHelpers {
 		return selectedIndex;
 	}
 
+	@Override
 	public void textFieldWithPlaceHolder(JTextField textBox, String placeHolder) {
 		textBox.addFocusListener(new FocusListener() {
 			@Override
@@ -94,13 +99,5 @@ public class GeneralHelpers {
 				}
 			}
 		});
-	}
-
-	public void print(Object val) {
-		System.out.println(val.toString());
-	}
-	
-	public String convertToSqlString(Object val){
-		return "'" + val + "'";
 	}
 }
