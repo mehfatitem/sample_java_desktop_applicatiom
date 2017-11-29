@@ -86,7 +86,7 @@ public class DisplayForm extends JFrame implements IForm {
 		jgoster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					if (db.kayitKontrol() == false) {
+					if (!db.kayitKontrol()) {
 						JOptionPane.showMessageDialog(jframe, UserMessage.ThereIsNoRecord);
 					} else {
 						tablo = db.kullaniciListele();

@@ -9,6 +9,7 @@
 */
 package sample_dp_1.Db;
 
+
 import javax.swing.JTable;
 
 import net.proteanit.sql.DbUtils;
@@ -26,7 +27,8 @@ public class Db extends DbHelpers implements IDb {
 		Object[] data = new Object[]{"name,"+ad , "surname,"+soyad , "gender," + cinsiyet};
 		String sorgu = createInsertSql("soru1.user", data);
 		print(sorgu);
-		this.querySql(sorgu);
+		if(this.querySql(sorgu)<1)
+			print("Sorgu çalýþtýralamadý.");
 		this.baglantiKapat();
 	}
 
